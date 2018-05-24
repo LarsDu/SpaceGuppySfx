@@ -22,7 +22,7 @@ from spaceguppy_sfx.sfx import SfxComponent,SfxSystem
 from spaceguppy_sfx.sfx_renderer import SfxRenderer
 
 
-test_image = abspath(join('..','..','res','img','wip','aster1.png'))
+test_image = abspath(join('..','res','img','aster1.png'))
 texture_manager.load_image(test_image)
 
 
@@ -56,7 +56,8 @@ class TestGame(Widget):
             'sfx':{
                 "scale":(1.,1.),
                 "render_rotate":0.,
-                "v_color": (200,20,20,255),
+                "v_color": (200,255,255,255),
+                "v_tint": (2.0,1.0,3.0,.3), 
                 "x_trans": 1.,
                 "y_trans": 1.,
                 "x_shear": .4,
@@ -73,6 +74,10 @@ class TestGame(Widget):
                 'render':True
             },
         }
+
+        # Note: v_tint is just v_color only 255=1.0, and values can be greater than 1.0
+        # I originally added it as a hack to get golden colored asteroids without
+        # creating new sprites --Larry
         ent = init_entity(create_dict, [ 'position','rotate','sfx','sfx_renderer'])
 
         entity = self.gameworld.entities[ent]
