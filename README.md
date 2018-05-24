@@ -7,8 +7,7 @@ a fragment shader and shearing.
 
 Requires kivent_core and kivy to be installed.
 
-To install this module to your python's site-packages directory
-
+To install this module to your python's site-packages directory:
 ```
 python setup.py built_ext install
 ```
