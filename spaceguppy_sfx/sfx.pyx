@@ -86,6 +86,19 @@ cdef class SfxComponent(MemComponent):
             data.v_color[2] = v_color[2]
             data.v_color[3] = v_color[3]
 
+    property v_tint:
+        def __get__(self):
+            cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
+            return (data.v_tint[0],data.v_tint[1],data.v_tint[2],data.v_tint[3])
+        
+        def __set__(self, tuple v_tint):
+            cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
+            data.v_tint[0] = v_tint[0]
+            data.v_tint[1] = v_tint[1]
+            data.v_tint[2] = v_tint[2]
+            data.v_tint[3] = v_tint[3]
+            
+            
     property v_color_r:
         def __get__(self):
             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
@@ -248,6 +261,7 @@ cdef class SfxSystem(StaticMemGameSystem):
         "scale":(1.,1.),
         "render_rotate":0.,
         "v_color": (255,255,255,255),
+        "v_tint": (1.0, 1.0, 1.0, 1.0),
         "x_trans": 1.,
         "y_trans": 1.,
         "x_shear": 0.,
@@ -279,6 +293,10 @@ cdef class SfxSystem(StaticMemGameSystem):
         component.v_color[1] =  int(cargs['v_color'][1])
         component.v_color[2] =  int(cargs['v_color'][2])
         component.v_color[3] =  int(cargs['v_color'][3])
+        component.v_tint[0] =  int(cargs['v_tint'][0])
+        component.v_tint[1] =  int(cargs['v_tint'][1])
+        component.v_tint[2] =  int(cargs['v_tint'][2])
+        component.v_tint[3] =  int(cargs['v_tint'][3])
         component.x_trans =  float(cargs['x_trans'])
         component.y_trans =  float(cargs['y_trans'])
         component.x_shear =  float(cargs['x_shear'])
@@ -305,6 +323,10 @@ cdef class SfxSystem(StaticMemGameSystem):
         pointer.v_color[1]= 255
         pointer.v_color[2] = 255
         pointer.v_color[3] = 255
+        pointer.v_tint[0] = 1.0
+        pointer.v_tint[1]= 1.0
+        pointer.v_tint[2] = 1.0
+        pointer.v_tint[3] = 1.0
         pointer.x_trans = 1.
         pointer.y_trans = 1.
         pointer.x_shear = 1.
