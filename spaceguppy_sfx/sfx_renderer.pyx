@@ -1,14 +1,14 @@
 # cython: embedsignature=True
 from kivent_core.systems.renderers cimport RenderStruct,Renderer
-from nemo_sfx.sfx_formats cimport VertexFormatSfx1
-from nemo_sfx.sfx_formats import vertex_format_sfx1
+from spaceguppy_sfx.sfx_formats cimport VertexFormatSfx1
+from spaceguppy_sfx.sfx_formats import vertex_format_sfx1
 
 
 from kivy.graphics.cgl cimport GLushort
 from kivent_core.rendering.batching cimport BatchManager, IndexedBatch
 from kivent_core.rendering.vertex_format cimport KEVertexFormat
 from kivent_core.systems.position_systems cimport PositionStruct2D
-from nemo_sfx.sfx cimport SfxStruct2D
+from spaceguppy_sfx.sfx cimport SfxStruct2D
 #from kivent_core.systems.scale_systems cimport ScaleStruct2D
 from kivent_core.systems.rotate_systems cimport RotateStruct2D
 #from kivent_core.systems.color_systems cimport ColorStruct
