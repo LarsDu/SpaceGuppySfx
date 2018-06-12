@@ -7,6 +7,7 @@ ctypedef struct VertexFormatSfx1:
     GLfloat[2] scale
     GLfloat rotate
     GLubyte[4] v_color
+    GLfloat[4] v_tint
     GLfloat render_rotate
     GLfloat x_trans
     GLfloat y_trans
