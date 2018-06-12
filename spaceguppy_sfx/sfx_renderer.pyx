@@ -158,6 +158,8 @@ cdef class SfxRenderer(Renderer):
 
                                 for i in range(4):
                                     vertex.v_color[i] = sfx_comp.v_color[i]
+                                for i in range(4):
+                                    vertex.v_tint[i] = sfx_comp.v_tint[i]                                    
                                 vertex.render_rotate = sfx_comp.render_rotate
                                 vertex.x_trans = sfx_comp.x_trans
                                 vertex.y_trans = sfx_comp.y_trans
