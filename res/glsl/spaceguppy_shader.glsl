@@ -37,11 +37,11 @@ uniform float      opacity;
 
 
 
-
+•••••••
 
 void main (void) {
 
-  frag_color = v_color * color * vec4(1., 1., 1., opacity);
+  frag_color = v_color * v_tint * color * vec4(1., 1., 1., opacity);
   tex_coord0 = uvs;
 
   /*Pass through variables to fragment shader*/
