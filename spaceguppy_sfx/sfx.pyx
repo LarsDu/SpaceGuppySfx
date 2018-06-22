@@ -86,19 +86,6 @@ cdef class SfxComponent(MemComponent):
             data.v_color[2] = v_color[2]
             data.v_color[3] = v_color[3]
 
-    property v_tint:
-        def __get__(self):
-            cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
-            return (data.v_tint[0],data.v_tint[1],data.v_tint[2],data.v_tint[3])
-        
-        def __set__(self, tuple v_tint):
-            cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
-            data.v_tint[0] = v_tint[0]
-            data.v_tint[1] = v_tint[1]
-            data.v_tint[2] = v_tint[2]
-            data.v_tint[3] = v_tint[3]
-            
-            
     property v_color_r:
         def __get__(self):
             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
@@ -134,6 +121,23 @@ cdef class SfxComponent(MemComponent):
         def __set__(self, unsigned char value):
             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
             data.v_color[3] = value
+
+
+
+    property v_tint:
+        def __get__(self):
+            cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
+            return (data.v_tint[0],data.v_tint[1],data.v_tint[2],data.v_tint[3])
+        
+        def __set__(self, tuple v_tint):
+            cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
+            data.v_tint[0] = max(0.0,v_tint[0])
+            data.v_tint[1] = max(0.0,v_tint[1])
+            data.v_tint[2] = max(0.0,v_tint[2])
+            data.v_tint[3] = max(0.0,v_tint[3])
+
+
+
             
 
     property x_trans:
@@ -234,7 +238,7 @@ cdef class SfxComponent(MemComponent):
         def __set__(self,float value):
             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
             data.edge_effect_thresh = value
-
+'''
     property sfx_flag:
         def __get__(self):
             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
@@ -243,7 +247,7 @@ cdef class SfxComponent(MemComponent):
         def __set__(self,float value):
             cdef SfxStruct2D* data = <SfxStruct2D*>self.pointer
             data.sfx_flag = value
-
+'''
 
 
 
@@ -261,14 +265,14 @@ cdef class SfxSystem(StaticMemGameSystem):
         "scale":(1.,1.),
         "render_rotate":0.,
         "v_color": (255,255,255,255),
-        "v_tint": (1.0, 1.0, 1.0, 1.0),
+        "v_tint": (1.,1.,1.,1.),
         "x_trans": 1.,
         "y_trans": 1.,
         "x_shear": 0.,
         "y_shear": 0.,
         "edge_effect_color": (255,255,255,255),
         "edge_effect_thresh":0.,
-        "sfx_flag": 1.
+#        "sfx_flag": 1.
     }
 
 
@@ -293,10 +297,13 @@ cdef class SfxSystem(StaticMemGameSystem):
         component.v_color[1] =  int(cargs['v_color'][1])
         component.v_color[2] =  int(cargs['v_color'][2])
         component.v_color[3] =  int(cargs['v_color'][3])
+
         component.v_tint[0] =  int(cargs['v_tint'][0])
         component.v_tint[1] =  int(cargs['v_tint'][1])
         component.v_tint[2] =  int(cargs['v_tint'][2])
         component.v_tint[3] =  int(cargs['v_tint'][3])
+
+        
         component.x_trans =  float(cargs['x_trans'])
         component.y_trans =  float(cargs['y_trans'])
         component.x_shear =  float(cargs['x_shear'])
@@ -306,7 +313,7 @@ cdef class SfxSystem(StaticMemGameSystem):
         component.edge_effect_color[2] = int(cargs['edge_effect_color'][2])
         component.edge_effect_color[3] = int(cargs['edge_effect_color'][3])
         component.edge_effect_thresh = float(cargs['edge_effect_thresh'])
-        component.sfx_flag =  float(cargs['sfx_flag'])
+#        component.sfx_flag =  float(cargs['sfx_flag'])
         
         #super(DefaultGameSystem,self).init_component(component_index,entity_id,zone,combined_args)
         #self.create_sys_entity(component_index,entity_id,zone,args)
@@ -323,10 +330,10 @@ cdef class SfxSystem(StaticMemGameSystem):
         pointer.v_color[1]= 255
         pointer.v_color[2] = 255
         pointer.v_color[3] = 255
-        pointer.v_tint[0] = 1.0
-        pointer.v_tint[1]= 1.0
-        pointer.v_tint[2] = 1.0
-        pointer.v_tint[3] = 1.0
+        pointer.v_tint[0] = 1.
+        pointer.v_tint[1]= 1.
+        pointer.v_tint[2] = 1.
+        pointer.v_tint[3] = 1.
         pointer.x_trans = 1.
         pointer.y_trans = 1.
         pointer.x_shear = 1.
@@ -335,7 +342,7 @@ cdef class SfxSystem(StaticMemGameSystem):
         pointer.edge_effect_color[1] = 255
         pointer.edge_effect_color[2]= 255
         pointer.edge_effect_color[3] = 255
-        pointer.sfx_flag = 0.
+#        pointer.sfx_flag = 0.
 
 Factory.register('SfxSystem', cls=SfxSystem)
 
