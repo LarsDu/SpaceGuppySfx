@@ -20,7 +20,7 @@ ctypedef struct SfxStruct2D:
     float y_shear
     unsigned char[4] edge_effect_color
     float edge_effect_thresh
-    float sfx_flag
+    #float sfx_flag
 
 
 
