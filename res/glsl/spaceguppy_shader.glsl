@@ -35,10 +35,6 @@ uniform mat4       projection_mat;
 uniform vec4       color;
 uniform float      opacity;
 
-
-
-•••••••
-
 void main (void) {
 
   frag_color = v_color * v_tint * color * vec4(1., 1., 1., opacity);
