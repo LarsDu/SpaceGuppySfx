@@ -29,7 +29,7 @@ vertex_format_sfx1 = [
     (b'rotate', 1, b'float', rot_offset,False),
     (b'render_rotate', 1, b'float', render_rot_offset,False),
     (b'v_color', 4, b'ubyte', color_offset,True),
-    (b'v_tint', 4, b'float', tint_offset, True),
+    (b'v_tint', 4, b'float', tint_offset, False),
     (b'x_trans', 1, b'float', x_trans_offset,False),
     (b'y_trans', 1, b'float',  y_trans_offset,False),
     (b'x_shear', 1, b'float', x_shear_offset,False),
