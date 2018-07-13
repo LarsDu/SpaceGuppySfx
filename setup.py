@@ -155,7 +155,7 @@ else:
 
 setup(
     name='SpaceGuppy Sfx Renderer System',
-    version='.5',
+    version='0.4.0',
     description='''An extension for kivent for accessing shader variables
         https://github.com/Kovak/KivEnt for more info.''',
     author='Lawrence Du',
