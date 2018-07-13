@@ -12,8 +12,7 @@ instructions for different architectures.
 """
 
 class SpaceGuppySfxRecipe(CythonRecipe):
-    version = 'master'
-    version = 'v0.4.0-alpha'
+    version = '0.4.1-alpha'
     url = 'https://github.com/LarsDu/SpaceGuppySfx/archive/{version}.zip'
     name = 'spaceguppy_sfx'
     depends=['kivent_core']
